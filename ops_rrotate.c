@@ -1,0 +1,83 @@
+#include "push_swap.h"
+
+static void	reverse_rotate_top(t_stack *stack)
+{
+	// Segurança: Para rodar ao contrário, precisamos de pelo menos 2 elementos
+	if (!stack || stack->size < 2 || !stack->top)
+		return ;
+
+	// O topo recua para o nó anterior (que era o último). Instantâneo!
+	stack->top = stack->top->prev;
+}
+
+void	rra(t_data *data)
+{
+	if (!data || !data->a || data->a->size < 2)
+		return ;
+
+	reverse_rotate_top(data->a);
+
+	if (!data->flags.silent)
+		write(1, "rra\n", 4);
+
+	if (data->flags.bench)
+	{
+		data->bench.op_count[RRA]++;
+		data->bench.total_ops++;
+	}
+}
+
+void	rrb(t_data *data)
+{
+	if (!data || !data->b || data->b->size < 2)
+		return ;
+
+	reverse_rotate_top(data->b);
+
+	if (!data->flags.silent)
+		write(1, "rrb\n", 4);
+
+	if (data->flags.bench)
+	{
+		data->bench.op_count[RRB]++;
+		data->bench.total_ops++;
+	}
+}
+
+void	rrr(t_data *data)
+{
+	int	rotated;
+
+	if (!data)
+		return ;
+	rotated = 0;
+	// 1. Liga o silenciador para rra e rrb ficarem calados
+	data->flags.silent = 1;
+
+	if (data->a && data->a->size >= 2)
+	{
+		rra(data);
+		rotated = 1;
+	}
+	if (data->b && data->b->size >= 2)
+	{
+		rrb(data);
+		rotated = 1;
+	}
+
+	// 2. Desliga o silenciador
+	data->flags.silent = 0;
+
+	// 3. Print e contabilidade do movimento único combinado
+	if (rotated)
+	{
+		if (!data->flags.silent)
+			write(1, "rrr\n", 4);
+
+		if (data->flags.bench)
+		{
+			data->bench.op_count[RRR]++;
+			data->bench.total_ops++;
+		}
+	}
+}
