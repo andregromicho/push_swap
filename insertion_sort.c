@@ -1,37 +1,39 @@
 #include "push_swap.h"
 
-/* Insertion Sort: Algoritmo para lidar com desordem baixa (D < 0.2) */
+/* Insertion Sort: algoritmo adaptativo para desordem baixa */
 void	run_insertion_sort(t_data *data)
 {
 	int	size;
-	int	i;
-	int	j;
+	int	pos;
+	int	target_index;
 
 	if (!data || !data->a || data->a->size <= 1)
 		return ;
-	
-	size = data->a->size;
-	i = 1;
-	
-	// Loop para cada elemento da stack (começando do segundo)
-	while (i < size)
+
+	// Se já está ordenado, não faz nenhuma operação
+	if (compute_disorder(data->a) == 0.0)
+		return ;
+
+	// Seleção simples: move o maior elemento restante para B e depois repõe em A
+	while (data->a->size > 0)
 	{
-		j = 0;
-		// Procura a posição correta para inserir o elemento atual
-		while (j < i)
+		size = data->a->size;
+		target_index = size - 1;
+		pos = get_node_position(data->a, target_index);
+		if (pos == -1)
+			break ;
+		if (pos <= size / 2)
 		{
-			// Se o elemento no topo é maior que o que está em posição i
-			// precisamos de o mover para trás
-			if (data->a->top->index > data->a->top->next->index)
-				sa(data);
-			
-			ra(data);
-			j++;
+			while (pos-- > 0)
+				ra(data);
 		}
-		i++;
+		else
+		{
+			while (pos++ < size)
+				rra(data);
+		}
+		pb(data);
 	}
-	
-	// Roda a stack para deixá-la na posição original
-	while (data->a->size > 0 && data->a->top->index != 0)
-		ra(data);
+	while (data->b->size > 0)
+		pa(data);
 }

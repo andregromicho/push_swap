@@ -46,5 +46,13 @@ void print_bench_report_pure(t_bench *bench)
     
     ft_putstr_fd("  pa : ", 2); ft_putnbr_fd(bench->op_count[PA], 2);
     ft_putstr_fd(" |  pb : ", 2); ft_putnbr_fd(bench->op_count[PB], 2);
+    ft_putstr_fd(" |  ra : ", 2); ft_putnbr_fd(bench->op_count[RA], 2);
+    ft_putstr_fd(" |  rb : ", 2); ft_putnbr_fd(bench->op_count[RB], 2);
+    ft_putstr_fd("\n", 2);
+
+    ft_putstr_fd("  rr : ", 2); ft_putnbr_fd(bench->op_count[RR], 2);
+    ft_putstr_fd(" | rra : ", 2); ft_putnbr_fd(bench->op_count[RRA], 2);
+    ft_putstr_fd(" | rrb : ", 2); ft_putnbr_fd(bench->op_count[RRB], 2);
+    ft_putstr_fd(" | rrr : ", 2); ft_putnbr_fd(bench->op_count[RRR], 2);
     ft_putstr_fd("\n================================================\n\n", 2);
 }
