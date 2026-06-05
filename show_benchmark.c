@@ -1,3 +1,4 @@
+#include "push_swap.h"
 
 void print_disorder_fd(double disorder, int fd)
 {

@@ -87,4 +87,60 @@ typedef struct s_data
 	t_bench	bench;
 }	t_data;
 
+/* ========================================================================== */
+/* 3. FUNCTION PROTOTYPES                                  */
+/* ========================================================================== */
+
+/* Parsing e validação */
+int		init_and_parse(t_data *data, int argc, char **argv);
+int		validate_flags(t_data *data);
+int		ft_strcmp(char *s1, char *s2);
+int		is_digit_str(char *str);
+int		ft_atoi_protected(char *str, int *result);
+char	**ft_split(char const *s, char c);
+void	free_matrix(char **matrix);
+
+/* Stack utilities */
+int		has_duplicate(t_stack *stack, int value);
+int		add_back_circular(t_stack *stack, int value);
+int		get_node_position(t_stack *stack, int target_index);
+void	reindex_stack(t_stack *stack);
+void	rank_stack(t_stack *stack);
+
+/* Operações de stack */
+void	sa(t_data *data);
+void	sb(t_data *data);
+void	ss(t_data *data);
+void	pa(t_data *data);
+void	pb(t_data *data);
+void	ra(t_data *data);
+void	rb(t_data *data);
+void	rr(t_data *data);
+void	rra(t_data *data);
+void	rrb(t_data *data);
+void	rrr(t_data *data);
+
+/* Algoritmos de ordenação */
+void	algorithm_hub(t_data *data);
+void	run_bubble_sort(t_data *data);
+void	run_chunk_sort(t_data *data);
+void	run_radix_sort(t_data *data);
+void	run_adaptive_sort(t_data *data);
+void	run_insertion_sort(t_data *data);
+
+/* Cálculos */
+double	compute_disorder(t_stack *a);
+
+/* Benchmark e output */
+void	print_disorder_fd(double disorder, int fd);
+void	print_bench_report_pure(t_bench *bench);
+
+/* String utilities */
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
+int		ft_strlen(char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_itoa(int n);
+char	*ft_strdup(char *src);
+
 #endif

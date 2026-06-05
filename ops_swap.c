@@ -45,7 +45,7 @@ void	sa(t_data *data)
 		return ;
 
 	// 1. Move fisicamente na memória
-	swap_top_circular(data->a);
+	swap_top(data->a);
 
 	// 2. Se NÃO estiver em modo silencioso, imprime no stdout
 	if (!data->flags.silent)
@@ -64,7 +64,7 @@ void	sb(t_data *data)
 	if (!data || !data->b || data->b->size < 2)
 		return ;
 	
-	swap_top_circular(data->b);
+	swap_top(data->b);
 
 	if (!data->flags.silent)
 		write(1, "sb\n", 3);

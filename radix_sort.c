@@ -21,7 +21,8 @@ void	run_radix_sort(t_data *data)
 	if (!data || !data->a || data->a->size <= 3)
 		return ;
 	// Regista a estratégia nas estatísticas do teu benchmark
-	data->bench.strategy = "Radix Sort (Binário) / O(n * k)";
+	data->bench.strategy = "Radix Sort (Binário)";
+	data->bench.complexity = "O(n * k)";
 	size = data->a->size;
 	max_bits = get_max_bits(size);
 	i = 0;

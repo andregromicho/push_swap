@@ -73,7 +73,8 @@ void	run_chunk_sort(t_data *data)
 		return;
 		
 	// Define o nome da estratégia para o relatório do teu modo benchmark
-	data->bench.strategy = "Chunk Sort / O(n√n)";
+	data->bench.strategy = "Chunk Sort";
+	data->bench.complexity = "O(n√n)";
 	
 	// 1. Calcula o tamanho do bloco baseado na raiz quadrada
 	chunk = ft_sqrt(data->a->size);

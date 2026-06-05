@@ -4,32 +4,33 @@ void	run_bubble_sort(t_data *data)
 {
 	int	size;
 	int	i;
-	int	swapped;
+	int	j;
+	int	max_iterations;
 
 	// 1. Validar se há elementos suficientes para ordenar
 	if (!data || !data->a || data->a->size < 2)
 		return ;
+	
 	size = data->a->size;
-	swapped = 1;
-	// 2. O ciclo principal continua até que uma volta inteira ocorra SEM trocas
-	while (swapped)
+	i = 0;
+	max_iterations = size * size * 2;  // Proteção contra loops infinitos
+	
+	// 2. Simples: faz tamanho² operações de ordenação (força bruta)
+	while (i < size && max_iterations > 0)
 	{
-		swapped = 0;
-		i = 0;
-		// 3. Fazemos uma passagem pela stack (fazendo size - 1 comparações)
-		while (i < size - 1)
+		j = 0;
+		while (j < size - 1 && max_iterations > 0)
 		{
-			// Compara o elemento do topo atual com o que está logo abaixo dele
+			// Se não está em ordem, troca
 			if (data->a->top->index > data->a->top->next->index)
-			{
-				sa(data);    // Chamas a operação passando apenas o contentor 'data'
-				swapped = 1; // Marca que houve uma alteração nesta passagem
-			}
-			ra(data);        // Roda a stack para trazer os próximos números ao topo
-			i++;
+				sa(data);
+			
+			// Move para o próximo
+			ra(data);
+			j++;
+			max_iterations--;
 		}
-		// 4. No fim da passagem, damos mais uma rotação para que a stack 
-		// volte exatamente à sua posição original antes de reavaliar o 'while'
-		ra(data);
+		i++;
+		max_iterations--;
 	}
 }

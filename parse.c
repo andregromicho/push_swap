@@ -29,8 +29,21 @@ static int	check_and_set_flags(t_data *data, char *arg)
 		data->flags.adaptive = 1;
 		return (1);
 	}
-	// Podes adicionar aqui outras flags se o teu enunciado exigir
-	// (ex: --simple, --medium, --complex)
+	if (ft_strcmp(arg, "--simple") == 0)
+	{
+		data->flags.simple = 1;
+		return (1);
+	}
+	if (ft_strcmp(arg, "--medium") == 0)
+	{
+		data->flags.medium = 1;
+		return (1);
+	}
+	if (ft_strcmp(arg, "--complex") == 0)
+	{
+		data->flags.complex = 1;
+		return (1);
+	}
 	return (0);
 }
 

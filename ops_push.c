@@ -36,16 +36,6 @@ static void	attach_top(t_stack *dest, t_node *node)
 	dest->size++;
 }
 
-static void	push_top(t_stack *dest, t_stack *src)
-{
-	t_node	*node_to_move;
-
-	if (!src || src->size == 0 || !src->top)
-		return ;
-	node_to_move = detach_top(src);
-	attach_top(dest, node_to_move);
-}
-
 void	pa(t_data *data)
 {
 	t_node	*node;

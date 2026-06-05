@@ -3,7 +3,7 @@
 void algorithm_hub(t_data *data)
 {
     // Calcular a desordem inicial e guardar direto na struct
-    data->bench.disorder = calculate_disorder(data->a) * 100.0;
+    data->bench.disorder = compute_disorder(data->a) * 100.0;
 
     if (data->flags.simple)
     {
@@ -24,5 +24,5 @@ void algorithm_hub(t_data *data)
         run_radix_sort(data);
     }
     else
-      run_adaptative_sort(data);
+      run_adaptive_sort(data);
 }
