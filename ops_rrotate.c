@@ -52,21 +52,18 @@ void	rrr(t_data *data)
 		return ;
 	rotated = 0;
 	// 1. Liga o silenciador para rra e rrb ficarem calados
-	data->flags.silent = 1;
-
 	if (data->a && data->a->size >= 2)
 	{
-		rra(data);
+		reverse_rotate_top(data->a);
 		rotated = 1;
 	}
 	if (data->b && data->b->size >= 2)
 	{
-		rrb(data);
+		reverse_rotate_top(data->b);
 		rotated = 1;
 	}
 
 	// 2. Desliga o silenciador
-	data->flags.silent = 0;
 
 	// 3. Print e contabilidade do movimento único combinado
 	if (rotated)

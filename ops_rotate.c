@@ -42,18 +42,16 @@ void	rr(t_data *data)
 	if (!data)
 		return ;
 	rotated = 0;
-	data->flags.silent = 1;
 	if (data->a && data->a->size >= 2)
 	{
-		ra(data);
+		rotate_top(data->a);
 		rotated = 1;
 	}
 	if (data->b && data->b->size >= 2)
 	{
-		rb(data);
+		rotate_top(data->b);
 		rotated = 1;
 	}
-	data->flags.silent = 0;
 	if (rotated)
 	{
 		if (!data->flags.silent)

@@ -22,6 +22,7 @@ static int	check_and_set_flags(t_data *data, char *arg)
 	if (ft_strcmp(arg, "--bench") == 0)
 	{
 		data->flags.bench = 1;
+		data->flags.silent = 1;
 		return (1);
 	}
 	if (ft_strcmp(arg, "--adaptive") == 0)
@@ -67,7 +68,7 @@ static int	parse_and_add(t_data *data, char *arg)
 	return (1);
 }
 
-/* Varre o argv, lida com aspas através de split e popula a Stack A */
+/* Varre o argv, lida com aspas através  de split e popula a Stack A*/
 int	init_and_parse(t_data *data, int argc, char **argv)
 {
 	int		i;

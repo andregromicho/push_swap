@@ -77,16 +77,11 @@ void	sb(t_data *data)
 
 void	ss(t_data *data)
 {
-	// 1. Ativa o silenciador
-	data->flags.silent = 1;
-
+	// 1. Ativa o silenciado
 	// 2. Chama as operações normais (elas movem a memória e contam o bench se ativo, mas não imprimem nada!)
-	sa(data);
-	sb(data);
-
-	// 3. Desativa o silenciador
-	data->flags.silent = 0;
-
+	swap_top(data->a);
+	swap_top(data->b);
+	// 3. Desativa o silenciado
 	// 4. Imprime ou contabiliza o comando combinado 'ss'
 	if (!data->flags.silent) // Garante consistência de fluxo
 		write(1, "ss\n", 3);
