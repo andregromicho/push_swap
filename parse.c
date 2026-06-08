@@ -25,22 +25,22 @@ static int	check_and_set_flags(t_data *data, char *arg)
 		data->flags.silent = 1;
 		return (1);
 	}
-	if (ft_strcmp(arg, "--adaptive") == 0)
+	else if (ft_strcmp(arg, "--adaptive") == 0)
 	{
 		data->flags.adaptive = 1;
 		return (1);
 	}
-	if (ft_strcmp(arg, "--simple") == 0)
+	else if (ft_strcmp(arg, "--simple") == 0)
 	{
 		data->flags.simple = 1;
 		return (1);
 	}
-	if (ft_strcmp(arg, "--medium") == 0)
+	else if (ft_strcmp(arg, "--medium") == 0)
 	{
 		data->flags.medium = 1;
 		return (1);
 	}
-	if (ft_strcmp(arg, "--complex") == 0)
+	else if (ft_strcmp(arg, "--complex") == 0)
 	{
 		data->flags.complex = 1;
 		return (1);
