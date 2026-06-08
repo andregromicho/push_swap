@@ -98,39 +98,18 @@ static t_data	*init_data(void)
 int	main(int argc, char **argv)
 {
 	t_data	*data;
-
-	// Validação básica de argumentos
 	if (argc < 2)
 		return (1);
-
-	// Inicializa a estrutura principal
 	data = init_data();
 	if (!data)
 		return (1);
-
-	// Faz parsing dos argumentos e popula a Stack A
 	if (!init_and_parse(data, argc, argv))
-	{
 		cleanup_and_exit(data, 1);
-	}
-
-	// Faz ranking dos valores (menor=0, segundo_menor=1, etc)
 	rank_stack(data->a);
-
-	// Valida as flags (garante exclusividade entre estratégias)
 	if (!validate_flags(data))
-	{
 		cleanup_and_exit(data, 1);
-	}
-
-	// Calcula a desordem inicial para os cálculos adaptativos
 	data->bench.disorder = compute_disorder(data->a) * 100.0;
-
-	// Escolhe e executa o algoritmo apropriado
 	algorithm_hub(data);
-
-	// Printa o relatório de benchmark (se --bench foi usado) e faz cleanup
 	cleanup_and_exit(data, 0);
-
 	return (0);
 }

@@ -40,19 +40,12 @@ void	pa(t_data *data)
 {
 	t_node	*node;
 
-	// 1. O enunciado exige: não faz nada se a Stack B estiver vazia
 	if (!data || !data->b || data->b->size == 0 || !data->b->top)
 		return ;
-
-	// 2. Move fisicamente o nó na memória (circular duplamente ligada)
 	node = detach_top(data->b);
 	attach_top(data->a, node);
-
-	// 3. Se NÃO estiver em modo silencioso, imprime no stdout
 	if (!data->flags.silent)
 		write(1, "pa\n", 3);
-
-	// 4. Se o modo benchmark estiver ativo, atualiza a contabilidade
 	if (data->flags.bench)
 	{
 		data->bench.op_count[PA]++;
@@ -64,19 +57,12 @@ void	pb(t_data *data)
 {
 	t_node	*node;
 
-	// 1. Segurança: não faz nada se a Stack A estiver vazia
 	if (!data || !data->a || data->a->size == 0 || !data->a->top)
 		return ;
-
-	// 2. Move fisicamente o nó na memória
 	node = detach_top(data->a);
 	attach_top(data->b, node);
-
-	// 3. Se NÃO estiver em modo silencioso, imprime no stdout
 	if (!data->flags.silent)
 		write(1, "pb\n", 3);
-
-	// 4. Se o modo benchmark estiver ativo, atualiza a contabilidade
 	if (data->flags.bench)
 	{
 		data->bench.op_count[PB]++;

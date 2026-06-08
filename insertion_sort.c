@@ -9,12 +9,8 @@ void	run_insertion_sort(t_data *data)
 
 	if (!data || !data->a || data->a->size <= 1)
 		return ;
-
-	// Se já está ordenado, não faz nenhuma operação
 	if (compute_disorder(data->a) == 0.0)
 		return ;
-
-	// Seleção simples: move o maior elemento restante para B e depois repõe em A
 	while (data->a->size > 0)
 	{
 		size = data->a->size;
