@@ -22,7 +22,6 @@ static int	check_and_set_flags(t_data *data, char *arg)
 	if (ft_strcmp(arg, "--bench") == 0)
 	{
 		data->flags.bench = 1;
-		data->flags.silent = 1;
 		return (1);
 	}
 	else if (ft_strcmp(arg, "--adaptive") == 0)
