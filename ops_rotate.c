@@ -12,7 +12,7 @@ void	ra(t_data *data)
 	if (!data || !data->a || data->a->size < 2)
 		return ;
 	rotate_top(data->a);
-	if (!data->flags.silent)
+	if (!data->flags.bench)
 		write(1, "ra\n", 3);
 	if (data->flags.bench)
 	{
@@ -26,7 +26,7 @@ void	rb(t_data *data)
 	if (!data || !data->b || data->b->size < 2)
 		return ;
 	rotate_top(data->b);
-	if (!data->flags.silent)
+	if (!data->flags.bench)
 		write(1, "rb\n", 3);
 	if (data->flags.bench)
 	{
@@ -54,7 +54,7 @@ void	rr(t_data *data)
 	}
 	if (rotated)
 	{
-		if (!data->flags.silent)
+		if (!data->flags.bench)
 			write(1, "rr\n", 3);
 		if (data->flags.bench)
 		{

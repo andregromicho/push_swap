@@ -66,8 +66,6 @@ void	run_chunk_sort(t_data *data)
 
 	if (!data || !data->a || data->a->size <= 3)
 		return ;
-	data->bench.strategy = "Chunk Sort";
-	data->bench.complexity = "O(n√n)";
 	chunk = ft_sqrt(data->a->size);
 	push_to_b_sqrt(data, chunk);
 	pull_to_a_ordered(data);

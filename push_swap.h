@@ -3,6 +3,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 /* ========================================================================== */
 /* 1. ENUMS                                   */
@@ -72,7 +73,7 @@ typedef struct s_flags
 	int	complex;
 	int	adaptive;
 	int	bench;
-	int	silent;
+	int silent;
 }	t_flags;
 
 /* ** Camada 3c: O Contentor Principal (O "Cérebro" do Programa)
