@@ -21,7 +21,6 @@ SOURCES = main.c \
           bubble_sort.c \
           chunk_sort.c \
           radix_sort.c \
-          insertion_sort.c \
           adptative_sort.c \
           disorder.c \
           show_benchmark.c

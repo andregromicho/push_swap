@@ -93,7 +93,6 @@ static t_data	*init_data(void)
 	data->flags.complex = 0;
 	data->flags.adaptive = 0;
 	data->flags.bench = 0;
-	data->flags.silent = 0;
 
 	// Inicializa os dados do benchmark
 	data->bench.disorder = 0.0;

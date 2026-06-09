@@ -73,7 +73,6 @@ typedef struct s_flags
 	int	complex;
 	int	adaptive;
 	int	bench;
-	int silent;
 }	t_flags;
 
 /* ** Camada 3c: O Contentor Principal (O "Cérebro" do Programa)
@@ -127,7 +126,6 @@ void	run_bubble_sort(t_data *data);
 void	run_chunk_sort(t_data *data);
 void	run_radix_sort(t_data *data);
 void	run_adaptive_sort(t_data *data);
-void	run_insertion_sort(t_data *data);
 
 /* Cálculos */
 double	compute_disorder(t_stack *a);
