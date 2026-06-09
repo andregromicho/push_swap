@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <limits.h>
 
 /* Compara duas strings. Útil para detetar as flags --bench e --adaptive */
 int	ft_strcmp(char *s1, char *s2)

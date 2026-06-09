@@ -9,9 +9,9 @@ void	run_adaptive_sort(t_data *data)
 	disorder = data->bench.disorder;
 	if (disorder < 0.2)
 	{
-		data->bench.strategy = "Insertion Sort";
+		data->bench.strategy = "Bubble Sort";
 		data->bench.complexity = "O(n²)";
-		run_insertion_sort(data);
+		run_bubble_sort(data);
 	}
 	else if (disorder >= 0.2 && disorder < 0.5)
 	{

@@ -44,7 +44,7 @@ void	pa(t_data *data)
 		return ;
 	node = detach_top(data->b);
 	attach_top(data->a, node);
-	if (!data->flags.silent)
+	if (!data->flags.bench)
 		write(1, "pa\n", 3);
 	if (data->flags.bench)
 	{
@@ -61,7 +61,7 @@ void	pb(t_data *data)
 		return ;
 	node = detach_top(data->a);
 	attach_top(data->b, node);
-	if (!data->flags.silent)
+	if (!data->flags.bench)
 		write(1, "pb\n", 3);
 	if (data->flags.bench)
 	{
