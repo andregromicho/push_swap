@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   chunk_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/09 20:39:27 by goperez-          #+#    #+#             */
+/*   Updated: 2026/06/09 20:47:56 by goperez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 // Calcula a raiz quadrada aproximada para definir o tamanho dinâmico do bloco
@@ -69,4 +81,24 @@ void	run_chunk_sort(t_data *data)
 	chunk = ft_sqrt(data->a->size);
 	push_to_b_sqrt(data, chunk);
 	pull_to_a_ordered(data);
+}
+
+/* Calcula a posição de um nó com um dado índice (contando do topo) */
+int	get_node_position(t_stack *stack, int target_index)
+{
+	t_node	*current;
+	int		pos;
+
+	if (!stack || !stack->top || target_index >= stack->size)
+		return (-1);
+	current = stack->top;
+	pos = 0;
+	while (current->index != target_index && pos < stack->size)
+	{
+		current = current->next;
+		pos++;
+	}
+	if (current->index == target_index)
+		return (pos);
+	return (-1);
 }
