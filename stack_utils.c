@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:51:58 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/09 20:51:59 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/10 14:30:29 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,10 @@ int	add_back_circular(t_stack *stack, int value)
 
 	if (!stack)
 		return (0);
-	
 	// Cria um índice simplificado (0 a N-1) baseado no tamanho atual
 	new_node = create_node(value, stack->size);
 	if (!new_node)
 		return (0);
-	
 	// Se a stack está vazia, o nó aponta para si próprio (circular)
 	if (stack->size == 0)
 	{
@@ -71,14 +69,12 @@ int	add_back_circular(t_stack *stack, int value)
 	{
 		// Encontra o último nó (que é stack->top->prev em circular)
 		last_node = stack->top->prev;
-		
 		// Insere o novo nó entre o último e o topo
 		new_node->next = stack->top;
 		new_node->prev = last_node;
 		last_node->next = new_node;
 		stack->top->prev = new_node;
 	}
-	
 	stack->size++;
 	return (1);
 }

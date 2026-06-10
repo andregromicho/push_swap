@@ -6,14 +6,14 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:17:56 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/09 20:45:31 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/10 14:41:05 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "./libft/libft.h"
+# include "./libft/libft.h"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -70,11 +70,11 @@ typedef struct s_stack
 */
 typedef struct s_bench
 {
-	double	disorder;      /* % de desordem com duas casas decimais */
-	char	*strategy;     /* Nome da estratégia utilizada */
-	char	*complexity;   /* Classe de complexidade teórica */
-	int		total_ops;     /* Contador geral de operações */
-	int		op_count[11];  /* Array indexado pelo enum t_ops */
+	double	disorder;/* % de desordem com duas casas decimais */
+	char	*strategy;/* Nome da estratégia utilizada */
+	char	*complexity;/* Classe de complexidade teórica */
+	int		total_ops;/* Contador geral de operações */
+	int		op_count[11];/* Array indexado pelo enum t_ops */
 }	t_bench;
 
 /* ** Camada 3b: Ativação de Flags
@@ -91,7 +91,8 @@ typedef struct s_flags
 
 /* ** Camada 3c: O Contentor Principal (O "Cérebro" do Programa)
 ** Junta as stacks A e B, os controlos de flags e as estatísticas de teste.
-** É a única struct que precisas de passar como argumento no teu Hub de Algoritmos.
+** É a única struct que precisas de passar como argumento no teu 
+** Hub de Algoritmos.
 */
 typedef struct s_data
 {
