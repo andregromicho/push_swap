@@ -8,12 +8,10 @@ CFLAGS   += -I$(LIBFT_DIR)
 
 SOURCES = main.c \
           parse.c \
-          parse_utils.c \
           check_flags.c \
           choose_algorytm.c \
           stack_utils.c \
           rank_stack.c \
-          ft_utils.c \
           ops_swap.c \
           ops_push.c \
           ops_rotate.c \
@@ -21,7 +19,6 @@ SOURCES = main.c \
           bubble_sort.c \
           chunk_sort.c \
           radix_sort.c \
-          insertion_sort.c \
           adptative_sort.c \
           disorder.c \
           show_benchmark.c

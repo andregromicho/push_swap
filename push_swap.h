@@ -1,8 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/09 20:17:56 by goperez-          #+#    #+#             */
+/*   Updated: 2026/06/09 20:45:31 by goperez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+#include "./libft/libft.h"
+
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 /* ========================================================================== */
 /* 1. ENUMS                                   */
@@ -72,7 +87,6 @@ typedef struct s_flags
 	int	complex;
 	int	adaptive;
 	int	bench;
-	int	silent;
 }	t_flags;
 
 /* ** Camada 3c: O Contentor Principal (O "Cérebro" do Programa)
@@ -92,19 +106,14 @@ typedef struct s_data
 /* ========================================================================== */
 
 /* Parsing e validação */
-int		init_and_parse(t_data *data, int argc, char **argv);
+int		process_input(t_data *data, int argc, char **argv);
 int		validate_flags(t_data *data);
-int		ft_strcmp(char *s1, char *s2);
-int		is_digit_str(char *str);
-int		ft_atoi_protected(char *str, int *result);
-char	**ft_split(char const *s, char c);
 void	free_matrix(char **matrix);
 
 /* Stack utilities */
 int		has_duplicate(t_stack *stack, int value);
 int		add_back_circular(t_stack *stack, int value);
 int		get_node_position(t_stack *stack, int target_index);
-void	reindex_stack(t_stack *stack);
 void	rank_stack(t_stack *stack);
 
 /* Operações de stack */
@@ -126,21 +135,12 @@ void	run_bubble_sort(t_data *data);
 void	run_chunk_sort(t_data *data);
 void	run_radix_sort(t_data *data);
 void	run_adaptive_sort(t_data *data);
-void	run_insertion_sort(t_data *data);
 
 /* Cálculos */
 double	compute_disorder(t_stack *a);
 
 /* Benchmark e output */
 void	print_disorder_fd(double disorder, int fd);
-void	print_bench_report_pure(t_bench *bench);
-
-/* String utilities */
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
-int		ft_strlen(char *s);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_itoa(int n);
-char	*ft_strdup(char *src);
+void	print_bench_report(t_bench *bench);
 
 #endif

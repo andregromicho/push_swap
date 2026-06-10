@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ops_push.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/09 20:53:02 by goperez-          #+#    #+#             */
+/*   Updated: 2026/06/09 20:53:03 by goperez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 // Remove o nó do topo da stack de origem e ajusta os vizinhos
 static t_node	*detach_top(t_stack *src)
@@ -44,7 +56,7 @@ void	pa(t_data *data)
 		return ;
 	node = detach_top(data->b);
 	attach_top(data->a, node);
-	if (!data->flags.silent)
+	if (!data->flags.bench)
 		write(1, "pa\n", 3);
 	if (data->flags.bench)
 	{
@@ -61,7 +73,7 @@ void	pb(t_data *data)
 		return ;
 	node = detach_top(data->a);
 	attach_top(data->b, node);
-	if (!data->flags.silent)
+	if (!data->flags.bench)
 		write(1, "pb\n", 3);
 	if (data->flags.bench)
 	{

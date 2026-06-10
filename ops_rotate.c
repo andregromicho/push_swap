@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ops_rotate.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/09 20:52:59 by goperez-          #+#    #+#             */
+/*   Updated: 2026/06/09 20:53:00 by goperez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	rotate_top(t_stack *stack)
@@ -12,7 +24,7 @@ void	ra(t_data *data)
 	if (!data || !data->a || data->a->size < 2)
 		return ;
 	rotate_top(data->a);
-	if (!data->flags.silent)
+	if (!data->flags.bench)
 		write(1, "ra\n", 3);
 	if (data->flags.bench)
 	{
@@ -26,7 +38,7 @@ void	rb(t_data *data)
 	if (!data || !data->b || data->b->size < 2)
 		return ;
 	rotate_top(data->b);
-	if (!data->flags.silent)
+	if (!data->flags.bench)
 		write(1, "rb\n", 3);
 	if (data->flags.bench)
 	{
@@ -54,7 +66,7 @@ void	rr(t_data *data)
 	}
 	if (rotated)
 	{
-		if (!data->flags.silent)
+		if (!data->flags.bench)
 			write(1, "rr\n", 3);
 		if (data->flags.bench)
 		{
