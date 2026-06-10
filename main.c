@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 16:33:28 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/09 20:47:16 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/10 14:24:03 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,6 @@ static t_data	*init_data(void)
 		free(data);
 		return (NULL);
 	}
-<<<<<<< HEAD
-	data->b->top = NULL;
-	data->b->size = 0;
-
-	// Inicializa as flags
-	data->flags.simple = 0;
-	data->flags.medium = 0;
-	data->flags.complex = 0;
-	data->flags.adaptive = 0;
-	data->flags.bench = 0;
-
-	// Inicializa os dados do benchmark
-	data->bench.disorder = 0.0;
-=======
->>>>>>> goncalo-develop
 	data->bench.strategy = "";
 	data->bench.complexity = "";
 	return (data);

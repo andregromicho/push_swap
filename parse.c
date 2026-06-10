@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:17:45 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/09 20:50:11 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/10 14:24:37 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,38 +34,22 @@ static int	parse_flag(t_data *data, char *arg)
 		data->flags.bench = 1;
 		return (1);
 	}
-<<<<<<< HEAD
-	else if (ft_strcmp(arg, "--adaptive") == 0)
-=======
 	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
->>>>>>> goncalo-develop
 	{
 		data->flags.adaptive = 1;
 		return (1);
 	}
-<<<<<<< HEAD
-	else if (ft_strcmp(arg, "--simple") == 0)
-=======
 	else if (ft_strncmp(arg, "--simple", 9) == 0)
->>>>>>> goncalo-develop
 	{
 		data->flags.simple = 1;
 		return (1);
 	}
-<<<<<<< HEAD
-	else if (ft_strcmp(arg, "--medium") == 0)
-=======
 	else if (ft_strncmp(arg, "--medium", 9) == 0)
->>>>>>> goncalo-develop
 	{
 		data->flags.medium = 1;
 		return (1);
 	}
-<<<<<<< HEAD
-	else if (ft_strcmp(arg, "--complex") == 0)
-=======
 	else if (ft_strncmp(arg, "--complex", 10) == 0)
->>>>>>> goncalo-develop
 	{
 		data->flags.complex = 1;
 		return (1);
