@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/09 20:51:58 by goperez-          #+#    #+#             */
+/*   Updated: 2026/06/10 14:30:29 by goperez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 /* Cria um novo nó com o valor fornecido */
@@ -42,12 +54,10 @@ int	add_back_circular(t_stack *stack, int value)
 
 	if (!stack)
 		return (0);
-	
 	// Cria um índice simplificado (0 a N-1) baseado no tamanho atual
 	new_node = create_node(value, stack->size);
 	if (!new_node)
 		return (0);
-	
 	// Se a stack está vazia, o nó aponta para si próprio (circular)
 	if (stack->size == 0)
 	{
@@ -59,57 +69,12 @@ int	add_back_circular(t_stack *stack, int value)
 	{
 		// Encontra o último nó (que é stack->top->prev em circular)
 		last_node = stack->top->prev;
-		
 		// Insere o novo nó entre o último e o topo
 		new_node->next = stack->top;
 		new_node->prev = last_node;
 		last_node->next = new_node;
 		stack->top->prev = new_node;
 	}
-	
 	stack->size++;
 	return (1);
-}
-
-/* Calcula a posição de um nó com um dado índice (contando do topo) */
-int	get_node_position(t_stack *stack, int target_index)
-{
-	t_node	*current;
-	int		pos;
-
-	if (!stack || !stack->top || target_index >= stack->size)
-		return (-1);
-	
-	current = stack->top;
-	pos = 0;
-	while (current->index != target_index && pos < stack->size)
-	{
-		current = current->next;
-		pos++;
-	}
-	
-	if (current->index == target_index)
-		return (pos);
-	return (-1);
-}
-
-/* Reindexar a stack: atribui índices simplificados após operações */
-void	reindex_stack(t_stack *stack)
-{
-	t_node	*current;
-	int		index;
-
-	if (!stack || !stack->top || stack->size == 0)
-		return ;
-	
-	current = stack->top;
-	index = 0;
-	while (1)
-	{
-		current->index = index;
-		current = current->next;
-		index++;
-		if (current == stack->top)
-			break ;
-	}
 }

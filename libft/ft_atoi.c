@@ -3,38 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abrandao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 17:16:35 by abrandao          #+#    #+#             */
-/*   Updated: 2026/04/27 14:45:59 by abrandao         ###   ########.fr       */
+/*   Updated: 2026/06/09 20:18:30 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str, int *result)
 {
-	int	i;
-	int	value;
-	int	sign;
+	long	num;
+	int		sign;
+	int		i;
 
-	value = 0;
-	i = 0;
+	num = 0;
 	sign = 1;
-	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
-		i++;
-	if (nptr[i] == '-' || nptr[i] == '+')
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (nptr[i] == '-')
-			sign = -sign;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	while (ft_isdigit(nptr[i]))
+	if (!str[i])
+		return (0);
+	while (str[i])
 	{
-		value = value * 10 + (nptr[i] - '0');
+		if (!ft_isdigit(str[i]))
+			return (0);
+		num = (num * 10) + (str[i] - '0');
+		if ((sign == 1 && num > INT_MAX) || (sign == -1 && (-num) < INT_MIN))
+			return (0);
 		i++;
 	}
-	return (value * sign);
+	*result = (int)(num * sign);
+	return (1);
 }
 
 /*int	main(void)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   show_benchmark.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/09 20:52:03 by goperez-          #+#    #+#             */
+/*   Updated: 2026/06/10 14:30:42 by goperez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	print_disorder_fd(double disorder, int fd)
@@ -61,7 +73,7 @@ static void	print_bench_ops(t_bench *bench)
 }
 
 /* Função principal (Hub) apelidada pelo teu programa */
-void	print_bench_report_pure(t_bench *bench)
+void	print_bench_report(t_bench *bench)
 {
 	if (!bench)
 		return ;
