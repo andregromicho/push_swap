@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:17:56 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/12 16:45:54 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 17:10:02 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_flags
 	int	complex;
 	int	adaptive;
 	int	bench;
+	int	count_only;
 }	t_flags;
 
 /* ** Camada 3c: O Contentor Principal (O "Cérebro" do Programa)
@@ -154,5 +155,6 @@ double	compute_disorder(t_stack *a);
 /* Benchmark e output */
 void	print_disorder_fd(double disorder, int fd);
 void	print_bench_report(t_bench *bench);
+void	emit_op(struct s_data *data, const char *op, int len, int op_index);
 
 #endif

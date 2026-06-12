@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:53:12 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:57:37 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 17:29:18 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,27 @@ static void	execute_strategy(t_data *data)
 {
 	if (data->flags.simple)
 	{
-		data->bench.strategy = "Bubble Sort";
+		data->bench.strategy = "Simple";
 		data->bench.complexity = "O(n²)";
 		run_bubble_sort(data);
 	}
 	else if (data->flags.medium)
 	{
-		data->bench.strategy = "Chunk Sort";
+		data->bench.strategy = "Medium";
 		data->bench.complexity = "O(n√n)";
 		run_chunk_sort(data);
 	}
 	else if (data->flags.complex)
 	{
-		data->bench.strategy = "Radix Sort";
+		data->bench.strategy = "Complex";
 		data->bench.complexity = "O(n log n)";
 		run_radix_sort(data);
 	}
 	else
+	{
+		data->bench.strategy = "Adaptive";
 		run_adaptive_sort(data);
+	}
 }
 
 // O Hub Principal

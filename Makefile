@@ -15,6 +15,7 @@ SOURCES = main.c \
           ops_push.c \
           ops_rotate.c \
           ops_rrotate.c \
+          ops_output.c \
           bubble_sort.c \
           chunk_sort.c \
           radix_sort.c \

@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:52:59 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/11 17:44:23 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 17:10:02 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,7 @@ void	ra(t_data *data)
 	if (!data || !data->a || data->a->size < 2)
 		return ;
 	rotate_top(data->a);
-	write(1, "ra\n", 3);
-	if (data->flags.bench)
-	{
-		data->bench.op_count[RA]++;
-		data->bench.total_ops++;
-	}
+	emit_op(data, "ra\n", 3, RA);
 }
 
 void	rb(t_data *data)
@@ -37,12 +32,7 @@ void	rb(t_data *data)
 	if (!data || !data->b || data->b->size < 2)
 		return ;
 	rotate_top(data->b);
-	write(1, "rb\n", 3);
-	if (data->flags.bench)
-	{
-		data->bench.op_count[RB]++;
-		data->bench.total_ops++;
-	}
+	emit_op(data, "rb\n", 3, RB);
 }
 
 void	rr(t_data *data)
@@ -64,11 +54,6 @@ void	rr(t_data *data)
 	}
 	if (rotated)
 	{
-		write(1, "rr\n", 3);
-		if (data->flags.bench)
-		{
-			data->bench.op_count[RR]++;
-			data->bench.total_ops++;
-		}
+		emit_op(data, "rr\n", 3, RR);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:17:45 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/11 18:44:42 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 17:11:40 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ static int	parse_flag(t_data *data, char *arg)
 		data->flags.bench = 1;
 		return (1);
 	}
+	/* else if (ft_strncmp(arg, "--count-only", 13) == 0)
+	{
+		data->flags.count_only = 1;
+		return (1);
+	}  */
 	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
 	{
 		data->flags.adaptive = 1;

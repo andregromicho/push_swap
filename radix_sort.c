@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:52:45 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/12 16:52:23 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 17:27:19 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ void	run_radix_sort(t_data *data)
 		sort_5(data);
 		return ;
 	}
-	// Regista a estratégia nas estatísticas do teu benchmark
-	data->bench.strategy = "Radix Sort (Binário)";
-	data->bench.complexity = "O(n log n)";
 	size = data->a->size;
 	max_bits = get_max_bits(size);
 	i = 0;
