@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 16:33:28 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/12 15:20:04 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 16:45:54 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ static void	free_stack(t_stack *stack)
 	current = stack->top;
 	if (current)
 	{
-		while (1)
+		t_node *start = current;
+		while (current && (tmp = current->next, 1))
 		{
-			tmp = current;
-			current = current->next;
-			free(tmp);
-			if (current == stack->top)
+			free(current);
+			current = tmp;
+			if (current == start)
 				break ;
 		}
 	}

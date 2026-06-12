@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:17:56 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/11 17:59:14 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 16:45:54 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,10 @@ void	run_bubble_sort(t_data *data);
 void	run_chunk_sort(t_data *data);
 void	run_radix_sort(t_data *data);
 void	run_adaptive_sort(t_data *data);
+
+/* Small / specialized sort helpers */
+void	sort_3(t_data *data);
+void	sort_5(t_data *data);
 
 /* Cálculos */
 double	compute_disorder(t_stack *a);

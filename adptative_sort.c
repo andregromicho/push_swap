@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:53:22 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:58:01 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 16:45:54 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ void	run_adaptive_sort(t_data *data)
 
 	if (!data || !data->a || data->a->size <= 1)
 		return ;
+	if (data->a->size <= 3)
+	{
+		sort_3(data);
+		return ;
+	}
+	if (data->a->size == 5)
+	{
+		sort_5(data);
+		return ;
+	}
 	disorder = data->bench.disorder;
 	if (disorder < 0.2)
 	{
@@ -34,7 +44,7 @@ void	run_adaptive_sort(t_data *data)
 	else
 	{
 		data->bench.strategy = "Radix Sort";
-		data->bench.complexity = "O(n * k)";
+		data->bench.complexity = "O(n log n)";
 		run_radix_sort(data);
 	}
 }

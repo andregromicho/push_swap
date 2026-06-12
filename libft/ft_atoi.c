@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/14 17:16:35 by abrandao          #+#    #+#             */
-/*   Updated: 2026/06/09 20:18:30 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 16:28:26 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ int	ft_atoi(const char *str, int *result)
 			return (0);
 		i++;
 	}
-	*result = (int)(num * sign);
-	return (1);
+	return (*result = (int)(num * sign), 1);
 }
 
 /*int	main(void)

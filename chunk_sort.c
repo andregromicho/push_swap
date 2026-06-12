@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:39:27 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:57:33 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 16:45:54 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,21 @@ static void	pull_to_a_ordered(t_data *data)
 {
 	int	target_index;
 	int	pos;
+	t_node  *cur;
 
 	while (data->b->size > 0)
 	{
-		target_index = data->b->size - 1;
+		/* compute the actual maximum index present in stack B */
+		cur = data->b->top;
+		target_index = cur->index;
+		pos = 0;
+		while (pos < data->b->size)
+		{
+			if (cur->index > target_index)
+				target_index = cur->index;
+			cur = cur->next;
+			pos++;
+		}
 		pos = get_node_position(data->b, target_index);
 		if (pos <= data->b->size / 2)
 		{
@@ -75,9 +86,18 @@ static void	pull_to_a_ordered(t_data *data)
 void	run_chunk_sort(t_data *data)
 {
 	int	chunk;
-
-	if (!data || !data->a || data->a->size <= 3)
+	if (!data || !data->a)
 		return ;
+	if (data->a->size <= 3)
+	{
+		sort_3(data);
+		return ;
+	}
+	if (data->a->size == 5)
+	{
+		sort_5(data);
+		return ;
+	}
 	chunk = ft_sqrt(data->a->size);
 	push_to_b_sqrt(data, chunk);
 	pull_to_a_ordered(data);
@@ -89,16 +109,16 @@ int	get_node_position(t_stack *stack, int target_index)
 	t_node	*current;
 	int		pos;
 
-	if (!stack || !stack->top || target_index >= stack->size)
+	if (!stack || !stack->top)
 		return (-1);
 	current = stack->top;
 	pos = 0;
-	while (current->index != target_index && pos < stack->size)
+	while (pos < stack->size)
 	{
+		if (current->index == target_index)
+			return (pos);
 		current = current->next;
 		pos++;
 	}
-	if (current->index == target_index)
-		return (pos);
 	return (-1);
 }
