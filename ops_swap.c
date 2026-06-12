@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:52:54 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:53:35 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:21:24 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	sa(t_data *data)
 	if (!data || !data->a || data->a->size < 2)
 		return ;
 	swap_top(data->a);
-	if (!data->flags.bench)
-		write(1, "sa\n", 3);
+	/* if (!data->flags.bench) */
+	write(1, "sa\n", 3);
 	if (data->flags.bench)
 	{
 		data->bench.op_count[SA]++;
@@ -56,8 +56,8 @@ void	sb(t_data *data)
 	if (!data || !data->b || data->b->size < 2)
 		return ;
 	swap_top(data->b);
-	if (!data->flags.bench)
-		write(1, "sb\n", 3);
+	/* if (!data->flags.bench) */
+	write(1, "sb\n", 3);
 	if (data->flags.bench)
 	{
 		data->bench.op_count[SB]++;
@@ -69,8 +69,8 @@ void	ss(t_data *data)
 {
 	swap_top(data->a);
 	swap_top(data->b);
-	if (!data->flags.bench)
-		write(1, "ss\n", 3);
+	/* if (!data->flags.bench) */
+	write(1, "ss\n", 3);
 	if (data->flags.bench)
 	{
 		data->bench.op_count[SS]++;

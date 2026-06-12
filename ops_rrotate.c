@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:52:57 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:54:15 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:22:23 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	rra(t_data *data)
 	if (!data || !data->a || data->a->size < 2)
 		return ;
 	reverse_rotate_top(data->a);
-	if (!data->flags.bench)
-		write(1, "rra\n", 4);
+	/* if (!data->flags.bench) */
+	write(1, "rra\n", 4);
 	if (data->flags.bench)
 	{
 		data->bench.op_count[RRA]++;
@@ -38,8 +38,8 @@ void	rrb(t_data *data)
 	if (!data || !data->b || data->b->size < 2)
 		return ;
 	reverse_rotate_top(data->b);
-	if (!data->flags.bench)
-		write(1, "rrb\n", 4);
+	/* if (!data->flags.bench) */
+	write(1, "rrb\n", 4);
 	if (data->flags.bench)
 	{
 		data->bench.op_count[RRB]++;
@@ -66,8 +66,8 @@ void	rrr(t_data *data)
 	}
 	if (rotated)
 	{
-		if (!data->flags.bench)
-			write(1, "rrr\n", 4);
+		/* if (!data->flags.bench) */
+		write(1, "rrr\n", 4);
 		if (data->flags.bench)
 		{
 			data->bench.op_count[RRR]++;

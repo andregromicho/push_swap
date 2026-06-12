@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 16:33:28 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:55:38 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 15:20:04 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,49 @@ static t_data	*init_data(void)
 	return (data);
 }
 
+/* #include <stdio.h>
+void    print_stacks_debug(t_data *data)
+{
+    t_node  *current;
+    int     i;
+
+    if (!data)
+        return ;
+    
+    // --- Print Stack A ---
+    printf("--- STACK A (Size: %d) ---\n", data->a->size);
+    if (data->a && data->a->top)
+    {
+        current = data->a->top;
+        i = 0;
+        while (i < data->a->size)
+        {
+            printf("[Node %d] Value: %10d | Index: %d\n", i, current->value, current->index);
+            current = current->next;
+            i++;
+        }
+    }
+    else
+        printf("(Empty)\n");
+
+    // --- Print Stack B ---
+    printf("\n--- STACK B (Size: %d) ---\n", data->b->size);
+    if (data->b && data->b->top)
+    {
+        current = data->b->top;
+        i = 0;
+        while (i < data->b->size)
+        {
+            printf("[Node %d] Value: %10d | Index: %d\n", i, current->value, current->index);
+            current = current->next;
+            i++;
+        }
+    }
+    else
+        printf("(Empty)\n");
+    printf("---------------------------\n\n");
+} */
+
 /* Função principal */
 int	main(int argc, char **argv)
 {
@@ -90,6 +133,7 @@ int	main(int argc, char **argv)
 		cleanup_and_exit(data, 1);
 	data->bench.disorder = compute_disorder(data->a) * 100.0;
 	algorithm_hub(data);
-	cleanup_and_exit(data, 0);
+/* 	print_stacks_debug(data);
+ */	cleanup_and_exit(data, 0);
 	return (0);
 }

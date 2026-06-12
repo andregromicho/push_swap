@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:52:59 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:54:29 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:44:23 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	ra(t_data *data)
 	if (!data || !data->a || data->a->size < 2)
 		return ;
 	rotate_top(data->a);
-	if (!data->flags.bench)
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 	if (data->flags.bench)
 	{
 		data->bench.op_count[RA]++;
@@ -38,8 +37,7 @@ void	rb(t_data *data)
 	if (!data || !data->b || data->b->size < 2)
 		return ;
 	rotate_top(data->b);
-	if (!data->flags.bench)
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 	if (data->flags.bench)
 	{
 		data->bench.op_count[RB]++;
@@ -66,8 +64,7 @@ void	rr(t_data *data)
 	}
 	if (rotated)
 	{
-		if (!data->flags.bench)
-			write(1, "rr\n", 3);
+		write(1, "rr\n", 3);
 		if (data->flags.bench)
 		{
 			data->bench.op_count[RR]++;

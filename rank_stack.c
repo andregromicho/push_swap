@@ -6,26 +6,71 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:52:42 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:37:15 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:59:24 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* Estrutura auxiliar para sorting durante ranking */
-typedef struct s_rank_pair
+/*
+** Helper function to sort the pairs array using bubble sort.
+*/
+static void	sort_pairs(t_rank_pair *pairs, int size)
 {
-	int	value;
-	int	pos;
-}	t_rank_pair;
+	int			i;
+	int			j;
+	t_rank_pair	tmp;
 
-/* Comparador para qsort */
-static int	compare_rank(const void *a, const void *b)
-{
-	return (((t_rank_pair *)a)->value - ((t_rank_pair *)b)->value);
+	i = 0;
+	while (i < size - 1)
+	{
+		j = 0;
+		while (j < size - i - 1)
+		{
+			if (pairs[j].value > pairs[j + 1].value)
+			{
+				tmp = pairs[j];
+				pairs[j] = pairs[j + 1];
+				pairs[j + 1] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
-/* Faz ranking dos valores da stack: o menor fica com índice 0, o próximo com 1, etc. */
+/*
+** Fills the index map and applies the ranks to the stack nodes.
+*/
+static void	apply_ranks(t_stack *stack, t_rank_pair *pairs, int size)
+{
+	t_node	*current;
+	int		*index_map;
+	int		i;
+
+	index_map = malloc(sizeof(int) * size);
+	if (!index_map)
+		return ;
+	i = 0;
+	while (i < size)
+	{
+		index_map[pairs[i].pos] = i;
+		i++;
+	}
+	current = stack->top;
+	i = 0;
+	while (i < size)
+	{
+		current->index = index_map[i];
+		current = current->next;
+		i++;
+	}
+	free(index_map);
+}
+
+/*
+** Ranks the stack values so that the smallest becomes 0, next 1, etc.
+*/
 void	rank_stack(t_stack *stack)
 {
 	t_rank_pair	*pairs;
@@ -36,7 +81,6 @@ void	rank_stack(t_stack *stack)
 	if (!stack || !stack->top || stack->size <= 1)
 		return ;
 	size = stack->size;
-	// Cria um array com pares (valor, posição)
 	pairs = malloc(sizeof(t_rank_pair) * size);
 	if (!pairs)
 		return ;
@@ -49,26 +93,7 @@ void	rank_stack(t_stack *stack)
 		current = current->next;
 		i++;
 	}
-	// Ordena por valor
-	qsort(pairs, size, sizeof(t_rank_pair), compare_rank);
-	// Cria um mapa de índices (valor original -> novo índice)
-	int *index_map = malloc(sizeof(int) * size);
-	if (!index_map)
-	{
-		free(pairs);
-		return ;
-	}
-	for (i = 0; i < size; i++)
-		index_map[pairs[i].pos] = i;
-	// Aplica os novos índices à stack
-	current = stack->top;
-	i = 0;
-	while (i < size)
-	{
-		current->index = index_map[i];
-		current = current->next;
-		i++;
-	}
+	sort_pairs(pairs, size);
+	apply_ranks(stack, pairs, size);
 	free(pairs);
-	free(index_map);
 }

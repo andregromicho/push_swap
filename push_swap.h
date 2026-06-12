@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:17:56 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:41:05 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/11 17:59:14 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,13 @@ typedef struct s_data
 	t_flags	flags;
 	t_bench	bench;
 }	t_data;
+
+/* Struct para o Rank */
+typedef struct s_rank_pair
+{
+	int	value;
+	int	pos;
+}	t_rank_pair;
 
 /* ========================================================================== */
 /* 3. FUNCTION PROTOTYPES                                  */
