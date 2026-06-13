@@ -6,13 +6,12 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:52:45 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/12 17:27:19 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:44:16 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Função para calcular quantos bits precisamos para o maior índice
 static int	get_max_bits(int size)
 {
 	int	max_bits;
@@ -23,12 +22,26 @@ static int	get_max_bits(int size)
 	return (max_bits);
 }
 
+static void	process_bit_pass(t_data *data, int bit, int size)
+{
+	int	j;
+
+	j = 0;
+	while (j < size)
+	{
+		if (((data->a->top->index >> bit) & 1) == 0)
+			pb(data);
+		else
+			ra(data);
+		j++;
+	}
+}
+
 void	run_radix_sort(t_data *data)
 {
 	int	size;
 	int	max_bits;
 	int	i;
-	int	j;
 
 	if (!data || !data->a)
 		return ;
@@ -44,23 +57,11 @@ void	run_radix_sort(t_data *data)
 	}
 	size = data->a->size;
 	max_bits = get_max_bits(size);
-	i = 0;
-	// Loop para cada bit (da direita para a esquerda)
-	while (i < max_bits)
+	i = -1;
+	while (++i < max_bits)
 	{
-		j = 0;
-		while (j < size)
-		{
-			// Se o bit atual for 0, vai para B. Se for 1, roda em A.
-			if (((data->a->top->index >> i) & 1) == 0)
-				pb(data);
-			else
-				ra(data);
-			j++;
-		}
-		// Recupera tudo o que ficou no "balde" B para manter a ordem estável
+		process_bit_pass(data, i, size);
 		while (data->b->size > 0)
 			pa(data);
-		i++;
 	}
 }

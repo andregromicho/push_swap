@@ -6,13 +6,12 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:51:58 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:30:29 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:49:07 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* Cria um novo nó com o valor fornecido */
 static t_node	*create_node(int value, int index)
 {
 	t_node	*new_node;
@@ -27,7 +26,6 @@ static t_node	*create_node(int value, int index)
 	return (new_node);
 }
 
-/* Procura se um valor já existe na stack (evita duplicados) */
 int	has_duplicate(t_stack *stack, int value)
 {
 	t_node	*current;
@@ -46,7 +44,6 @@ int	has_duplicate(t_stack *stack, int value)
 	return (0);
 }
 
-/* Insere um novo elemento no final da lista (mantendo a circular) */
 int	add_back_circular(t_stack *stack, int value)
 {
 	t_node	*new_node;
@@ -54,11 +51,9 @@ int	add_back_circular(t_stack *stack, int value)
 
 	if (!stack)
 		return (0);
-	// Cria um índice simplificado (0 a N-1) baseado no tamanho atual
 	new_node = create_node(value, stack->size);
 	if (!new_node)
 		return (0);
-	// Se a stack está vazia, o nó aponta para si próprio (circular)
 	if (stack->size == 0)
 	{
 		new_node->next = new_node;
@@ -67,9 +62,7 @@ int	add_back_circular(t_stack *stack, int value)
 	}
 	else
 	{
-		// Encontra o último nó (que é stack->top->prev em circular)
 		last_node = stack->top->prev;
-		// Insere o novo nó entre o último e o topo
 		new_node->next = stack->top;
 		new_node->prev = last_node;
 		last_node->next = new_node;

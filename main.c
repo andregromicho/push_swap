@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 16:33:28 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/12 17:10:02 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:36:13 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@ static void	free_stack(t_stack *stack)
 {
 	t_node	*current;
 	t_node	*tmp;
+	t_node	*start;
 
 	if (!stack)
 		return ;
 	current = stack->top;
 	if (current)
 	{
-		t_node *start = current;
-		while (current && (tmp = current->next, 1))
+		start = current;
+		while (current)
 		{
+			tmp = current->next;
 			free(current);
 			current = tmp;
 			if (current == start)
@@ -64,7 +66,7 @@ static t_data	*init_data(void)
 	if (!data)
 		return (NULL);
 	data->a = ft_calloc(1, sizeof(t_stack));
-	if (!data)
+	if (!data->a)
 		return (NULL);
 	data->b = ft_calloc(1, sizeof(t_stack));
 	if (!data->b)
@@ -77,49 +79,6 @@ static t_data	*init_data(void)
 	data->bench.complexity = "";
 	return (data);
 }
-
-/* #include <stdio.h>
-void    print_stacks_debug(t_data *data)
-{
-    t_node  *current;
-    int     i;
-
-    if (!data)
-        return ;
-    
-    // --- Print Stack A ---
-    printf("--- STACK A (Size: %d) ---\n", data->a->size);
-    if (data->a && data->a->top)
-    {
-        current = data->a->top;
-        i = 0;
-        while (i < data->a->size)
-        {
-            printf("[Node %d] Value: %10d | Index: %d\n", i, current->value, current->index);
-            current = current->next;
-            i++;
-        }
-    }
-    else
-        printf("(Empty)\n");
-
-    // --- Print Stack B ---
-    printf("\n--- STACK B (Size: %d) ---\n", data->b->size);
-    if (data->b && data->b->top)
-    {
-        current = data->b->top;
-        i = 0;
-        while (i < data->b->size)
-        {
-            printf("[Node %d] Value: %10d | Index: %d\n", i, current->value, current->index);
-            current = current->next;
-            i++;
-        }
-    }
-    else
-        printf("(Empty)\n");
-    printf("---------------------------\n\n");
-} */
 
 /* Função principal */
 int	main(int argc, char **argv)
@@ -138,7 +97,6 @@ int	main(int argc, char **argv)
 		cleanup_and_exit(data, 1);
 	data->bench.disorder = compute_disorder(data->a) * 100.0;
 	algorithm_hub(data);
-/* 	print_stacks_debug(data);
- */	cleanup_and_exit(data, 0);
+	cleanup_and_exit(data, 0);
 	return (0);
 }

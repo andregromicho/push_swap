@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   choose_algorytm.c                                  :+:      :+:    :+:   */
+/*   choose_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:53:12 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/12 17:29:18 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:31:22 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,24 @@ void	algorithm_hub(t_data *data)
 		return ;
 	}
 	execute_strategy(data);
+}
+
+/* Calcula a posição de um nó com um dado índice (contando do topo) */
+int	get_node_position(t_stack *stack, int target_index)
+{
+	t_node	*current;
+	int		pos;
+
+	if (!stack || !stack->top)
+		return (-1);
+	current = stack->top;
+	pos = 0;
+	while (pos < stack->size)
+	{
+		if (current->index == target_index)
+			return (pos);
+		current = current->next;
+		pos++;
+	}
+	return (-1);
 }
