@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bubble_sort.c                                      :+:      :+:    :+:   */
+/*   sort_simple.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:53:20 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/13 12:24:03 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/15 16:53:16 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,12 @@ void	run_bubble_sort(t_data *data)
 {
 	if (!data || !data->a || data->a->size < 2)
 		return ;
-	if (data->a->size == 5)
+	if (data->a->size <= 3)
+	{
+		sort_3(data);
+		return ;
+	}
+	else if (data->a->size <= 5)
 	{
 		sort_5(data);
 		return ;
