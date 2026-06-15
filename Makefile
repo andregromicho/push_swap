@@ -16,12 +16,11 @@ SOURCES = main.c \
           ops_rotate.c \
           ops_rrotate.c \
           ops_output.c \
-          bubble_sort.c \
-          chunk_sort.c \
-          radix_sort.c \
-          adaptive_sort.c \
-          sort3.c \
-          sort5.c \
+          sort_simple.c \
+          sort_medium.c \
+          sort_complex.c \
+          sort_adaptive.c \
+          sort_small.c \
           disorder.c \
           show_benchmark.c
 

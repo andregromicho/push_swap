@@ -19,7 +19,7 @@ static void	run_small_sort(t_data *data)
 		data->bench.complexity = "O(1)";
 		sort_3(data);
 	}
-	else if (data->a->size == 5)
+	else if (data->a->size <= 5)
 	{
 		data->bench.complexity = "O(n)";
 		sort_5(data);
@@ -38,12 +38,12 @@ void	run_adaptive_sort(t_data *data)
 		return ;
 	}
 	disorder = data->bench.disorder;
-	if (disorder < 0.2)
+	if (disorder < 20)
 	{
 		data->bench.complexity = "O(n²)";
 		run_bubble_sort(data);
 	}
-	else if (disorder >= 0.2 && disorder < 0.5)
+	else if (disorder >= 20 && disorder < 50)
 	{
 		data->bench.complexity = "O(n√n)";
 		run_chunk_sort(data);

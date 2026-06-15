@@ -57,25 +57,13 @@ static int	parse_flag(t_data *data, char *arg)
 		return (1);
 	}  */
 	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
-	{
-		data->flags.adaptive = 1;
-		return (1);
-	}
+		return (data->flags.adaptive = 1);
 	else if (ft_strncmp(arg, "--simple", 9) == 0)
-	{
-		data->flags.simple = 1;
-		return (1);
-	}
+		return (data->flags.simple = 1);
 	else if (ft_strncmp(arg, "--medium", 9) == 0)
-	{
-		data->flags.medium = 1;
-		return (1);
-	}
+		return (data->flags.medium = 1);
 	else if (ft_strncmp(arg, "--complex", 10) == 0)
-	{
-		data->flags.complex = 1;
-		return (1);
-	}
+		return (data->flags.complex = 1);
 	return (0);
 }
 
@@ -86,9 +74,9 @@ static int	handle_arguments(t_data *data, char *arg)
 	if (parse_flag(data, arg))
 		return (1);
 	if (!ft_atoi(arg, &value))
-		return (0);
+		return (write(2, "Error\n", 6), 0);
 	if (has_duplicate(data->a, value))
-		return (0);
+		return (write(2, "Error\n", 6), 0);
 	if (!add_back_circular(data->a, value))
 		return (0);
 	return (1);
