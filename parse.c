@@ -47,15 +47,7 @@ void	free_matrix(char **matrix)
 static int	parse_flag(t_data *data, char *arg)
 {
 	if (ft_strncmp(arg, "--bench", 8) == 0)
-	{
-		data->flags.bench = 1;
-		return (1);
-	}
-	/* else if (ft_strncmp(arg, "--count-only", 13) == 0)
-	{
-		data->flags.count_only = 1;
-		return (1);
-	}  */
+		return (data->flags.bench = 1);
 	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
 		return (data->flags.adaptive = 1);
 	else if (ft_strncmp(arg, "--simple", 9) == 0)

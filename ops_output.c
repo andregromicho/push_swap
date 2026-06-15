@@ -21,6 +21,5 @@ void	emit_op(t_data *data, const char *op, int len, int op_index)
 		data->bench.op_count[op_index]++;
 		data->bench.total_ops++;
 	}
-	if (!data->flags.count_only)
-		write(1, op, len);
+	write(1, op, len);
 }

@@ -87,7 +87,6 @@ typedef struct s_flags
 	int	complex;
 	int	adaptive;
 	int	bench;
-	int	count_only;
 }	t_flags;
 
 /* ** Camada 3c: O Contentor Principal (O "Cérebro" do Programa)

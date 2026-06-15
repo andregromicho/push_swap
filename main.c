@@ -42,11 +42,6 @@ static void	cleanup_and_exit(t_data *data, int exit_code)
 {
 	if (!data)
 		return ;
-	if (data->flags.count_only)
-	{
-		ft_putnbr_fd(data->bench.total_ops, 1);
-		ft_putstr_fd("\n", 1);
-	}
 	if (data->flags.bench)
 		print_bench_report(&data->bench);
 	if (data->a)
