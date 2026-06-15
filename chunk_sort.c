@@ -6,13 +6,12 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:39:27 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:57:33 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:31:26 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Calcula a raiz quadrada aproximada para definir o tamanho dinâmico do bloco
 static int	ft_sqrt(int num)
 {
 	int	i;
@@ -23,7 +22,6 @@ static int	ft_sqrt(int num)
 	return (i);
 }
 
-// Fase 1: Empurra de A para B usando a janela deslizante da raiz quadrada
 static void	push_to_b_sqrt(t_data *data, int chunk)
 {
 	int	i;
@@ -47,58 +45,63 @@ static void	push_to_b_sqrt(t_data *data, int chunk)
 	}
 }
 
-// Fase 2: Puxa de B para A trazendo sempre o maior elemento restante
+static void	rotate_b_to_target(t_data *data, int target_index)
+{
+	int	pos;
+
+	pos = get_node_position(data->b, target_index);
+	if (pos <= data->b->size / 2)
+	{
+		while (data->b->top->index != target_index)
+			rb(data);
+	}
+	else
+	{
+		while (data->b->top->index != target_index)
+			rrb(data);
+	}
+}
+
 static void	pull_to_a_ordered(t_data *data)
 {
-	int	target_index;
-	int	pos;
+	int		target_index;
+	int		pos;
+	t_node	*cur;
 
 	while (data->b->size > 0)
 	{
-		target_index = data->b->size - 1;
-		pos = get_node_position(data->b, target_index);
-		if (pos <= data->b->size / 2)
+		cur = data->b->top;
+		target_index = cur->index;
+		pos = 0;
+		while (pos < data->b->size)
 		{
-			while (data->b->top->index != target_index)
-				rb(data);
+			if (cur->index > target_index)
+				target_index = cur->index;
+			cur = cur->next;
+			pos++;
 		}
-		else
-		{
-			while (data->b->top->index != target_index)
-				rrb(data);
-		}
+		rotate_b_to_target(data, target_index);
 		pa(data);
 	}
 }
 
-// Função Principal do teu Hub
 void	run_chunk_sort(t_data *data)
 {
 	int	chunk;
 
-	if (!data || !data->a || data->a->size <= 3)
+	if (!data || !data->a)
 		return ;
+	if (data->a->size <= 3)
+	{
+		sort_3(data);
+		return ;
+	}
+	if (data->a->size == 5)
+	{
+		sort_5(data);
+		return ;
+	}
 	chunk = ft_sqrt(data->a->size);
 	push_to_b_sqrt(data, chunk);
 	pull_to_a_ordered(data);
-}
-
-/* Calcula a posição de um nó com um dado índice (contando do topo) */
-int	get_node_position(t_stack *stack, int target_index)
-{
-	t_node	*current;
-	int		pos;
-
-	if (!stack || !stack->top || target_index >= stack->size)
-		return (-1);
-	current = stack->top;
-	pos = 0;
-	while (current->index != target_index && pos < stack->size)
-	{
-		current = current->next;
-		pos++;
-	}
-	if (current->index == target_index)
-		return (pos);
-	return (-1);
 }

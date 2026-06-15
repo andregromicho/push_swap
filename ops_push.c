@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:53:02 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:54:57 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:36:41 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,7 @@ void	pa(t_data *data)
 		return ;
 	node = detach_top(data->b);
 	attach_top(data->a, node);
-	if (!data->flags.bench)
-		write(1, "pa\n", 3);
-	if (data->flags.bench)
-	{
-		data->bench.op_count[PA]++;
-		data->bench.total_ops++;
-	}
+	emit_op(data, "pa\n", 3, PA);
 }
 
 void	pb(t_data *data)
@@ -73,11 +67,5 @@ void	pb(t_data *data)
 		return ;
 	node = detach_top(data->a);
 	attach_top(data->b, node);
-	if (!data->flags.bench)
-		write(1, "pb\n", 3);
-	if (data->flags.bench)
-	{
-		data->bench.op_count[PB]++;
-		data->bench.total_ops++;
-	}
+	emit_op(data, "pb\n", 3, PB);
 }

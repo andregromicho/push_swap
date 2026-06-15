@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 NAME = push_swap
 
 LIBFT_DIR = ./libft
@@ -8,17 +8,20 @@ CFLAGS   += -I$(LIBFT_DIR)
 
 SOURCES = main.c \
           parse.c \
-          choose_algorytm.c \
+          choose_algorithm.c \
           stack_utils.c \
           rank_stack.c \
           ops_swap.c \
           ops_push.c \
           ops_rotate.c \
           ops_rrotate.c \
+          ops_output.c \
           bubble_sort.c \
           chunk_sort.c \
           radix_sort.c \
-          adptative_sort.c \
+          adaptive_sort.c \
+          sort3.c \
+          sort5.c \
           disorder.c \
           show_benchmark.c
 

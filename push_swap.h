@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:17:56 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:41:05 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/12 17:10:02 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_flags
 	int	complex;
 	int	adaptive;
 	int	bench;
+	int	count_only;
 }	t_flags;
 
 /* ** Camada 3c: O Contentor Principal (O "Cérebro" do Programa)
@@ -101,6 +102,13 @@ typedef struct s_data
 	t_flags	flags;
 	t_bench	bench;
 }	t_data;
+
+/* Struct para o Rank */
+typedef struct s_rank_pair
+{
+	int	value;
+	int	pos;
+}	t_rank_pair;
 
 /* ========================================================================== */
 /* 3. FUNCTION PROTOTYPES                                  */
@@ -137,11 +145,16 @@ void	run_chunk_sort(t_data *data);
 void	run_radix_sort(t_data *data);
 void	run_adaptive_sort(t_data *data);
 
+/* Small / specialized sort helpers */
+void	sort_3(t_data *data);
+void	sort_5(t_data *data);
+
 /* Cálculos */
 double	compute_disorder(t_stack *a);
 
 /* Benchmark e output */
 void	print_disorder_fd(double disorder, int fd);
 void	print_bench_report(t_bench *bench);
+void	emit_op(struct s_data *data, const char *op, int len, int op_index);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 16:33:28 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/10 14:55:38 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/13 12:36:13 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,20 @@ static void	free_stack(t_stack *stack)
 {
 	t_node	*current;
 	t_node	*tmp;
+	t_node	*start;
 
 	if (!stack)
 		return ;
 	current = stack->top;
 	if (current)
 	{
-		while (1)
+		start = current;
+		while (current)
 		{
-			tmp = current;
-			current = current->next;
-			free(tmp);
-			if (current == stack->top)
+			tmp = current->next;
+			free(current);
+			current = tmp;
+			if (current == start)
 				break ;
 		}
 	}
@@ -40,6 +42,11 @@ static void	cleanup_and_exit(t_data *data, int exit_code)
 {
 	if (!data)
 		return ;
+	if (data->flags.count_only)
+	{
+		ft_putnbr_fd(data->bench.total_ops, 1);
+		ft_putstr_fd("\n", 1);
+	}
 	if (data->flags.bench)
 		print_bench_report(&data->bench);
 	if (data->a)
@@ -59,7 +66,7 @@ static t_data	*init_data(void)
 	if (!data)
 		return (NULL);
 	data->a = ft_calloc(1, sizeof(t_stack));
-	if (!data)
+	if (!data->a)
 		return (NULL);
 	data->b = ft_calloc(1, sizeof(t_stack));
 	if (!data->b)
