@@ -6,13 +6,12 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:53:08 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/13 12:31:41 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/15 16:36:22 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* Auxiliar para o loop interior: conta os mistakes a partir do nó atual */
 static void	count_pairs_and_mistakes(t_stack *a, t_node *curr_i,
 				long *total_pairs, long *mistakes)
 {
@@ -28,7 +27,6 @@ static void	count_pairs_and_mistakes(t_stack *a, t_node *curr_i,
 	}
 }
 
-/* Calcula a desordem da stack entre 0.0 e 1.0 */
 double	compute_disorder(t_stack *a)
 {
 	t_node	*curr_i;

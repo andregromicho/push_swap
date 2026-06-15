@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
 
 LIBFT_DIR = ./libft
@@ -28,7 +28,7 @@ OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-# This rule triggers the libft Makefile if libft.a is missing or needs updating
+# This rule triggers the libft Makefile if libft.a is missing
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 

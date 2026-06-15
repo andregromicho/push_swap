@@ -6,13 +6,12 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/08 16:33:28 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/13 12:36:13 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/15 16:36:45 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* Liberta toda a memória alocada da stack */
 static void	free_stack(t_stack *stack)
 {
 	t_node	*current;
@@ -37,7 +36,6 @@ static void	free_stack(t_stack *stack)
 	free(stack);
 }
 
-/* Liberta toda a estrutura de dados e printa o relatório se necessário */
 static void	cleanup_and_exit(t_data *data, int exit_code)
 {
 	if (!data)
@@ -52,7 +50,6 @@ static void	cleanup_and_exit(t_data *data, int exit_code)
 	exit(exit_code);
 }
 
-/* Inicializa as stacks vazias */
 static t_data	*init_data(void)
 {
 	t_data	*data;
@@ -75,7 +72,6 @@ static t_data	*init_data(void)
 	return (data);
 }
 
-/* Função principal */
 int	main(int argc, char **argv)
 {
 	t_data	*data;

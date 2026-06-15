@@ -6,13 +6,12 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:53:12 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/13 12:31:22 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/15 16:34:57 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//Auxiliar estática para selecionar e executar a estratégia correta
 static void	execute_strategy(t_data *data)
 {
 	if (data->flags.simple)
@@ -40,7 +39,6 @@ static void	execute_strategy(t_data *data)
 	}
 }
 
-// O Hub Principal
 void	algorithm_hub(t_data *data)
 {
 	data->bench.disorder = compute_disorder(data->a) * 100.0;
@@ -53,7 +51,7 @@ void	algorithm_hub(t_data *data)
 	execute_strategy(data);
 }
 
-/* Calcula a posição de um nó com um dado índice (contando do topo) */
+/* Calculates the position of a node with a given index (top)*/
 int	get_node_position(t_stack *stack, int target_index)
 {
 	t_node	*current;

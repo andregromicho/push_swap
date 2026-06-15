@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:17:56 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/12 17:10:02 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/15 16:33:22 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@
 # include <stdlib.h>
 # include <limits.h>
 
-/* ========================================================================== */
-/* 1. ENUMS                                   */
-/* ========================================================================== */
-
-/* ** Mapeamento de índices para o array de contadores de operações.
-** Ajuda a evitar ter 11 variáveis inteiras soltas na struct de estatísticas.
-*/
 typedef enum e_ops
 {
 	SA,
@@ -41,13 +34,6 @@ typedef enum e_ops
 	RRR
 }	t_ops;
 
-/* ========================================================================== */
-/* 2. STRUCTS                                  */
-/* ========================================================================== */
-
-/* ** Camada 1: O Nó da Lista (Duplamente Ligado)
-** Guarda o valor original e o índice simplificado (0 a N-1).
-*/
 typedef struct s_node
 {
 	int				value;
@@ -56,30 +42,21 @@ typedef struct s_node
 	struct s_node	*prev;
 }	t_node;
 
-/* ** Camada 2: A Estrutura da Stack
-** Guarda o ponteiro para o nó que está no topo e o tamanho atual (O(1)).
-*/
 typedef struct s_stack
 {
 	t_node	*top;
 	int		size;
 }	t_stack;
 
-/* ** Camada 3a: Dados do Modo --bench
-** Guarda todas as métricas exigidas para o relatório final no stderr.
-*/
 typedef struct s_bench
 {
-	double	disorder;/* % de desordem com duas casas decimais */
-	char	*strategy;/* Nome da estratégia utilizada */
-	char	*complexity;/* Classe de complexidade teórica */
-	int		total_ops;/* Contador geral de operações */
-	int		op_count[11];/* Array indexado pelo enum t_ops */
+	double	disorder;
+	char	*strategy;
+	char	*complexity;
+	int		total_ops;
+	int		op_count[11];
 }	t_bench;
 
-/* ** Camada 3b: Ativação de Flags
-** Funciona como booleanos (0 = Falso, 1 = Verdadeiro) detetados no parsing.
-*/
 typedef struct s_flags
 {
 	int	simple;
@@ -89,11 +66,6 @@ typedef struct s_flags
 	int	bench;
 }	t_flags;
 
-/* ** Camada 3c: O Contentor Principal (O "Cérebro" do Programa)
-** Junta as stacks A e B, os controlos de flags e as estatísticas de teste.
-** É a única struct que precisas de passar como argumento no teu 
-** Hub de Algoritmos.
-*/
 typedef struct s_data
 {
 	t_stack	*a;
@@ -102,18 +74,12 @@ typedef struct s_data
 	t_bench	bench;
 }	t_data;
 
-/* Struct para o Rank */
 typedef struct s_rank_pair
 {
 	int	value;
 	int	pos;
 }	t_rank_pair;
 
-/* ========================================================================== */
-/* 3. FUNCTION PROTOTYPES                                  */
-/* ========================================================================== */
-
-/* Parsing e validação */
 int		process_input(t_data *data, int argc, char **argv);
 int		validate_flags(t_data *data);
 void	free_matrix(char **matrix);
@@ -124,7 +90,7 @@ int		add_back_circular(t_stack *stack, int value);
 int		get_node_position(t_stack *stack, int target_index);
 void	rank_stack(t_stack *stack);
 
-/* Operações de stack */
+/* Stack Operations */
 void	sa(t_data *data);
 void	sb(t_data *data);
 void	ss(t_data *data);
@@ -137,18 +103,17 @@ void	rra(t_data *data);
 void	rrb(t_data *data);
 void	rrr(t_data *data);
 
-/* Algoritmos de ordenação */
+/* Sort Algorithms */
 void	algorithm_hub(t_data *data);
 void	run_bubble_sort(t_data *data);
 void	run_chunk_sort(t_data *data);
 void	run_radix_sort(t_data *data);
 void	run_adaptive_sort(t_data *data);
 
-/* Small / specialized sort helpers */
 void	sort_3(t_data *data);
 void	sort_5(t_data *data);
 
-/* Cálculos */
+/* Disorder Calculator */
 double	compute_disorder(t_stack *a);
 
 /* Benchmark e output */

@@ -6,15 +6,13 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:52:42 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/13 12:44:38 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/15 16:40:01 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-** Helper function to sort the pairs array using bubble sort.
-*/
+// Helper function to sort the pairs array using bubble sort.
 static void	sort_pairs(t_rank_pair *pairs, int size)
 {
 	int			i;
@@ -39,9 +37,7 @@ static void	sort_pairs(t_rank_pair *pairs, int size)
 	}
 }
 
-/*
-** Fills the index map and applies the ranks to the stack nodes.
-*/
+// Fills the index map and applies the ranks to the stack nodes.
 static void	apply_ranks(t_stack *stack, t_rank_pair *pairs, int size)
 {
 	t_node	*current;
@@ -68,9 +64,7 @@ static void	apply_ranks(t_stack *stack, t_rank_pair *pairs, int size)
 	free(index_map);
 }
 
-/*
-** Ranks the stack values so that the smallest becomes 0, next 1, etc.
-*/
+// Ranks the stack values so that the smallest becomes 0, next 1, etc.
 void	rank_stack(t_stack *stack)
 {
 	t_rank_pair	*pairs;

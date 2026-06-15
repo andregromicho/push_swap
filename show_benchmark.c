@@ -6,7 +6,7 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:52:03 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/13 12:44:41 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/15 16:40:25 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	print_disorder_fd(double disorder, int fd)
 	write(fd, "%\n", 2);
 }
 
-/* Auxiliar para imprimir os dados gerais do benchmark */
 static void	print_bench_meta(t_bench *bench)
 {
 	ft_putstr_fd("\n========== PUSH_SWAP BENCHMARK REPORT ==========\n", 2);
@@ -44,7 +43,6 @@ static void	print_bench_meta(t_bench *bench)
 	ft_putstr_fd("\n------------------------------------------------\n", 2);
 }
 
-/* Auxiliar para imprimir os contadores individuais de cada operação */
 static void	print_bench_ops(t_bench *bench)
 {
 	ft_putstr_fd("  sa : ", 2);
@@ -72,7 +70,6 @@ static void	print_bench_ops(t_bench *bench)
 	ft_putstr_fd("\n================================================\n\n", 2);
 }
 
-/* Função principal (Hub) apelidada pelo teu programa */
 void	print_bench_report(t_bench *bench)
 {
 	if (!bench)

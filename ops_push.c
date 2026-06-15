@@ -6,12 +6,13 @@
 /*   By: goperez- <goperez-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 20:53:02 by goperez-          #+#    #+#             */
-/*   Updated: 2026/06/13 12:36:41 by goperez-         ###   ########.fr       */
+/*   Updated: 2026/06/15 16:38:22 by goperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// Remove o nó do topo da stack de origem e ajusta os vizinhos
+
+// Removes the top node from the source stack and adjusts the neighbors
 static t_node	*detach_top(t_stack *src)
 {
 	t_node	*node;
@@ -29,7 +30,7 @@ static t_node	*detach_top(t_stack *src)
 	return (node);
 }
 
-// Encaixa o nó no topo da stack de destino
+// Fits the node onto the top of the destination stack
 static void	attach_top(t_stack *dest, t_node *node)
 {
 	if (dest->size == 0)
