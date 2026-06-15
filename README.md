@@ -3,34 +3,35 @@
 Push Swap - 42 School Project
 A stack sorting program using limited operations, implemented in C.
 
-# 📋 Description
+## 📋 Description
 push_swap is a 42 School project that sorts a sequence of numbers using two stacks (A and B) with only a limited set of operations:
 
-Available Operations
-sa: Swap the top of A
+### Available Operations
+- sa: Swap the top of A
 
-sb: Swap the top of B
+- sb: Swap the top of B
 
-ss: Swap both tops
+- ss: Swap both tops
 
-pa: Move top of B to A
+- pa: Move top of B to A
 
-pb: Move top of A to B
+- pb: Move top of A to B
 
-ra: Rotate A (top goes to bottom)
+- ra: Rotate A (top goes to bottom)
 
-rb: Rotate B
+- rb: Rotate B
 
-rr: Rotate both
+- rr: Rotate both
 
-rra: Reverse rotate A
+- rra: Reverse rotate A
 
-rrb: Reverse rotate B
+- rrb: Reverse rotate B
 
-rrr: Reverse rotate both
+- rrr: Reverse rotate both
 
-# 🚀 Instructions
-## Compilation
+## 🚀 Instructions
+
+### Compilation
 This project should be used with a bash terminal.
 
 ```bash
@@ -40,7 +41,7 @@ make fclean   # Removes everything including the executable
 make re       # Recompiles everything
 ```
 
-## 💻 Usage
+### 💻 Usage
 ```bash
 ./push_swap [numbers]
 ./push_swap [numbers] --simple          # Bubble Sort (O(n²))
@@ -50,7 +51,7 @@ make re       # Recompiles everything
 ./push_swap [numbers] --bench           # Benchmark Mode with report
 ```
 
-## Examples
+### Examples
 ```bash
 # Simple sorting
 ./push_swap 3 2 1
@@ -65,15 +66,15 @@ make re       # Recompiles everything
 ./push_swap --simple "5 3 1 4 2"
 ```
 
-# 🎯 Explanation and justification of the algorithms selected
+## 🎯 Explanation and justification of the algorithms selected
 
-A single sorting algorithm is rarely optimal for every data distribution. In `push_swap`, where the efficiency score depends strictly on the total number of operations, we designed a **Multi-Strategy Hybrid Engine**. 
+A single sorting algorithm is rarely optimal for every data distribution. In `push_swap`, where the efficiency score depends strictly on the total number of operations, we designed a **Multi-Strategy Hybrid Strategy**. 
 
 By evaluating both the **dataset size ($N$)** and the **initial state of disorder**, the program dynamically routes the input to the most efficient algorithm, preventing the execution of redundant moves.
 
 ---
 
-### 1. Small Sort Optimization ($\le 5$ elements)
+#### 1. Small Sort Optimization ($\le 5$ elements)
 * **Algorithm Used:** Hardcoded state-machine for $N=3$; Cost-minimization push for $N=4$ and $N=5$.
 * **Justification:** For miniature datasets, the overhead of calculating complex data structures or sorting bit-by-bit is highly inefficient. 
   * **$N \le 3$:** Sorted in a maximum of **2 operations** using a hardcoded decision tree that analyzes the relationship between the three nodes.
@@ -81,13 +82,13 @@ By evaluating both the **dataset size ($N$)** and the **initial state of disorde
 
 ---
 
-### 2. Bubble Sort (`--simple`)
+#### 2. Bubble Sort (`--simple`)
 * **Complexity:** $O(n^2)$
 * **Justification:** While Bubble Sort is generally inefficient for large random datasets, it features a crucial property: it is highly effective on **nearly sorted data**. If a stack of 100 elements only has 2 or 3 numbers out of place (a low disorder percentage), Bubble Sort can fix those localized anomalies using immediate `sa` or targeted single-rotation operations, achieving sorted state far quicker than heavy restructuring algorithms.
 
 ---
 
-### 3. Chunk Sort (`--medium`)
+#### 3. Chunk Sort (`--medium`)
 * **Complexity:** $O(n\sqrt{n})$
 * **Justification:** When a dataset exhibits moderate disorder, a pure Radix sort might over-rotate the stack, while a Bubble sort would trigger too many comparisons. Chunk Sort bridges this gap by applying a **Divide and Conquer** philosophy:
   1. The dataset is logically sliced into $B$ sub-blocks (chunks), where the optimal number of chunks is mathematically proportional to $\sqrt{n}$.
@@ -96,7 +97,7 @@ By evaluating both the **dataset size ($N$)** and the **initial state of disorde
 
 ---
 
-### 4. Radix Sort (`--complex`)
+#### 4. Radix Sort (`--complex`)
 * **Complexity:** $O(n \times k)$ where $k$ is the number of bits required to represent the largest index.
 * **Justification:** For large, highly chaotic datasets (e.g., 500 random elements), standard comparison-based algorithms risk hitting their worst-case scenarios. Radix Sort offers a deterministic solution.
   * By first flattening the raw integers into consecutive **indices from $0$ to $N-1$**, we eliminate the issue of negative numbers and large gaps.
@@ -105,22 +106,22 @@ By evaluating both the **dataset size ($N$)** and the **initial state of disorde
 
 ---
 
-### 5. The Adaptive Engine (The Core Innovation)
+#### 5. The Adaptive Strategy
 Instead of forcing a static algorithm onto every payload, the default behavior of our `push_swap` analyzes the data's **Disorder Coefficient** before making a move.
 
 $$\text{Disorder } (\%) = \frac{\text{Number of Inversions}}{\text{Total Possible Inversions}}$$
 
 By establishing thresholds ($20\%$ and $50\%$), the program avoids the common pitfall of running a high-overhead Radix Sort on an array that only needed a few rotations to be solved, maximizing performance across all grading criteria.
 
-# Contributions
-We abrandao and goperez- worked together on this code, writing each function as the normal workflow required it to complete each part of the complete project, attempted to improve its efficiency in some algorithms, and tested it for efficiency, memory leaks and error management. We also consulted with other students that had already completed the project on the internal logic of the program, how to demonstrate if we understood the code and the specifics of the evaluation process.
+## Contributions
+We goperez- and abrandao built this project together, developing functions step-by-step as the workflow demanded. Along the way, we focused on optimizing key algorithms and rigorously testing for performance, memory leaks, and robust error handling. When we weren't physically together, we would work online with discord share-screen. We didn't want to divide the code as we wanted to learn everything together.
 
-# Resources
+## Resources
 - Library Functions Manual
 - We used the provided checker for linux.
 - [Radix sort - Wikipedia](https://en.wikipedia.org/wiki/Radix_sort)
+- We also used several references from stack-overflow, reddit, and youtube for visualizing the algorithms.
 
-## AI Usage Disclosure
+### AI Usage Disclosure
 - AI (Gemini 3 Flash) was used complementarily during this project.
-
 - Documentation: Assisting in formatting this README to maintain consistency with previous project documentation.
